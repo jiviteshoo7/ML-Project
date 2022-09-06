@@ -1,17 +1,16 @@
-from setuptools import setup
+from setuptools import setup,find_packages
 from typing import List
 
 Project_Name = "housing predictor"
 Version="0.0.1"
 Author="jivitesh"
 Description="This is housing prediction ML model"
-Packages=["housing"]
 Requirement_file_name="requirements.txt"
 
 
 def get_requirements_list()->List[str]:
     with open(Requirement_file_name) as requirement_file:
-        requirement_file.readlines()
+        return requirement_file.readlines().remove("-e .")
 
 
 setup(
@@ -19,7 +18,7 @@ name= Project_Name,
 version=Version,
 author=Author,
 description=Description,
-packages=Packages,
+packages=find_packages(),
 install_requires=get_requirements_list()
 )
 
